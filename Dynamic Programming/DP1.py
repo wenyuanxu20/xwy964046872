@@ -17,8 +17,8 @@ for j in range(c+1):
 
 for i in range(1, n+1):
     for j in range(1, c+1):
-        res[i][j]=res[i-1][j]
-        if (j >= w[i - 1]):
+        res[i][j] = res[i-1][j]
+        if j >= w[i - 1]:
             res[i][j] = max(res[i - 1][j - w[i - 1]] + v[i - 1], res[i-1][j]) #max(1500,0) 第一格是value = 0， 第二格1500
 
 
