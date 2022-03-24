@@ -56,4 +56,9 @@ class LinkList:
         return '<<'+','.join(map(str,self)) + '>>'
 
 
+x = LinkList
+
+print(x)
+
+
 
