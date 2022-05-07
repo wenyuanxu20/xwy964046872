@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
-import urllib3
+
 import urllib.request
 import json
-import requests
+
 
 data = {
     "scope": "test",#release
@@ -25,6 +25,7 @@ headers = {'Content-Type': 'application/json'
        }
 url = 'https://sigma-performance-c1hmt.proxima.nie.netease.com'
 url1 = 'https://sigma-performance-c1na.proxima.nie.easebar.com'
-response = urllib.request.urlopen(url=url1)
+request = urllib.request.Request(url=url, headers=headers, data=json.dumps(data).encode("utf8"))
+response = urllib.request.urlopen(request)
 the_page = response.read()
 print(the_page)

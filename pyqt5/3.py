@@ -1,80 +1,28 @@
-import sys
-from PyQt5.QtWidgets import (QWidget, QToolTip, QLabel, QLineEdit,QTextBrowser,QInputDialog,
-    QPushButton, QApplication)
-
-import score
-
-
-
-class Example(QWidget):
-    def __init__(self):
-        super().__init__()
-
-        self.initUI()  # 界面绘制交给InitUi方法
-        #self.buttonClicked()
-        self.CalculateClcik()
-
-    def initUI(self):
-        # 设置窗口的位置和大小
-        self.setGeometry(300, 300, 900, 700)
-        # 设置窗口的标题
-        self.setWindowTitle('Example1')
-        # 设置窗口的图标，引用当前目录下的web.png图片
-        #self.setWindowIcon(QIcon('web.png'))
-
-        #self.qle = QLineEdit(self)
-
-        # 创建一个PushButton并为他设置一个tooltip
-        btn1 = QPushButton('确定', self)
-        btn1.setToolTip('This is a <b>QPushButton</b> widget')
-        btn1.clicked.connect(self.CalculateClcik)
-
-        self.label_obj1 = QLabel(self)  # 静态标签
-        self.label_obj1.setText(u"K")
-        self.i1 = QLineEdit(self)  # 单行编辑框
-
-        self.label_obj2 = QLabel(self)  # 静态标签
-        self.label_obj2.setText(u"D")
-        self.i2 = QLineEdit(self)  # 单行编辑框
-
-
-
-        # 输出框1
-        self.text_browser = QTextBrowser(self)
-        self.text_browser.move(400, 50)
-
-        self.i1.move(100, 70)  # 编辑框1位置
-        self.i2.move(100, 90)  # 编辑框2位置
-
-
-        self.label_obj1.move(30, 70)  # label1位置
-        self.label_obj2.move(30, 90)  # label2位置
-
-
-        #x = self.line_edit_obj1.text()
-
-        #print(x)
-
-        # 显示窗口
-        self.show()
-    #
-
-
-    def CalculateClcik(self):
-        #x = self.pure_score_cal()
-        #x = float(x)
-        #try:
-        if self.i1.text() != '':
-
-            sum = int(self.i1.text()) + int(self.i2.text())
-            self.text_browser.setText(str(sum))
-
-        # except:
-        #     print('请输入正确的整数')
-        #     self.text_browser.setText("")
-
-if __name__ == '__main__':
-    # 创建应用程序和对象
-    app = QApplication(sys.argv)
-    ex = Example()
-    sys.exit(app.exec_())
+# -*- coding:utf-8 -*-
+import urllib.request
+import json
+data = {
+    "scope": "test",#release
+    "device_model": "vivo/vivo X9",
+    "user_name": "七月是你谎言",
+    "user_id": "88888888",
+    "platform":"android",
+    "host_id":1001,
+    "engine_version":"1.1.1",
+    "script_version":"1.1.1",
+    "channel":"app_store",
+    "gpu_name":"Apple A7 GPU",
+    "os_version":"ios 10.2",
+    "fps": 50,
+    "vertex_count":1000,
+    "draw_call": 1000,
+    "mem_usage":1024*1024*500
+}
+headers = {'Content-Type': 'application/json'
+       }
+url = 'https://sigma-performance-c1vn.proxima.nie.easebar.com'
+url1 = 'https://sigma-performance-c1na.proxima.nie.netease.com'
+request = urllib.request.Request(url=url, headers=headers, data=json.dumps(data).encode("utf8"))
+response = urllib.request.urlopen(request)
+the_page = response.read()
+print(the_page)
