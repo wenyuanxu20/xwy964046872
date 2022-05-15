@@ -22,3 +22,5 @@ if __name__ == '__main__':
     widget.setWindowTitle("PyQt Widget")
     widget.show()
     exit(app.exec_())
+
+

@@ -8,7 +8,7 @@ print(triangle[-1])
 for i in range(len(triangle)-2, -1, -1):  # 倒着遍历行
     print(triangle[i])
     for j in range(len(triangle[i])):  # 遍历每行各位置
-        triangle[i][j] = triangle[i][j] + min(triangle[i+1][j], triangle[i+1][j+1])   # 
+        triangle[i][j] = triangle[i][j] + min(triangle[i+1][j], triangle[i+1][j+1])   #
 
 print(triangle[0][0])
 
