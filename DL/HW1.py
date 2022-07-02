@@ -15,11 +15,12 @@ path = "E:\hw1/"
 train = pd.read_csv(path + 'train.csv', engine='python', encoding='utf-8')
 test = pd.read_csv(path + 'test.csv', engine='python', encoding='gbk')
 train = train[train['observation'] == 'PM2.5'] # 只要PM2.5
-print(train)
 test = test[test['AMB_TEMP'] == 'PM2.5']
+print(test)
 # 删除无关特征
-train = train.drop(['Date', 'stations', 'observation'], axis=1)
-test_x = test.iloc[:, 2:]
+train = train.drop(['Date', 'stations', 'observation'], axis=1) # 删除列，用axis=1
+test_x = test.iloc[:, 2:] # 删除前两列
+print(test_x)
 
 train_x = []
 train_y = []
